@@ -1,18 +1,19 @@
-/* Remove Later */
-#logo{
-    width: 475px
-}
-
-
-/* Coding Starts */
 body{
     font-family: 'Poppins', 'serif';
     background-image: url("../images/concrete_seamless.png");
     background-color: #f1f1f1;
 }
 
-header, .nav_links{
+header{
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nav_links{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 a:link, a:visited {
@@ -28,6 +29,11 @@ a:link, a:visited {
     border-top-right-radius: 50px;
 }
 
+body > header{
+    flex-direction: column;
+    align-items: center;
+}
+
 .pricing{
     display: flex;
     flex-direction: row;
@@ -40,4 +46,97 @@ a:link, a:visited {
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     flex-basis: 450px;
+}
+
+.gallery{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;   
+}
+
+.gallery img{
+    border: solid 10px #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+@keyframes startanimation {
+    0%   {width: 25px; opacity: 0;}
+    100%  {width: 475px; opacity: 1;}
+  }
+
+#logo {
+    animation-name: startanimation;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+  }
+
+@media screen and (min-width: 900px){
+    header{
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    body > header{
+        flex-direction: row;
+        position: sticky;
+        top: 0;
+    }
+
+    .nav_links{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .card{
+        flex-basis: 250px;
+    }
+}
+
+@media screen and (prefers-reduced-motion: reduce){
+    #logo {
+      animation-duration: initial; }
+}
+  
+@media print{
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: none;
+    }
+
+    nav{
+        display: flex;
+        flex-direction: column;
+        align-self: stretch;
+    }
+
+    .nav_links{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .pricing{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    .card{
+        border: solid 2px #45ADDD;
+        flex-basis: 325px;
+    }
+    
+    #gallery, .gallery{
+        display: none;  
+    }
+
+    .card > ul > li:nth-of-type(2)::after {
+        content:"👍";
+    }
+
 }
